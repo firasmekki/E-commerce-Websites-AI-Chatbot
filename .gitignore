@@ -35,3 +35,6 @@ auth.json
 /public/build
 /public/hot
 /public/storage
+
+# Local tooling / generated screenshots (not for the repo)
+/screenshots_rapport

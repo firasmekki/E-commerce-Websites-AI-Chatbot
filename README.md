@@ -1,303 +1,158 @@
-# E-commerce AI Chatbot Application
+# NextCommerce — E-commerce Platform with AI Chatbot
 
-A complete Laravel 11 e-commerce application with an integrated AI chatbot powered by Google Gemini API. This project demonstrates modern web development practices including MVC architecture, service layer pattern, comprehensive testing, and intelligent AI integration.
+A full-featured Laravel 11 e-commerce application with a customer storefront, an admin back-office, and a Google Gemini-powered shopping assistant.
+
+![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?logo=laravel&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+## Overview
+
+NextCommerce is a complete online store: product catalog, cart, coupons, checkout and order tracking for customers, plus a full admin dashboard to manage products, categories, orders, coupons and customer accounts. An AI chatbot (Google Gemini) is wired into the store's own data so it can answer questions about products, stock and orders in natural language.
+
+## Screenshots
+
+> Add screenshots to `docs/screenshots/` and reference them below (see [Screenshots to capture](#screenshots-to-capture) for the recommended list).
+
+| | |
+|---|---|
+| ![Home / product catalog](docs/screenshots/01-catalog.png) | ![Product detail](docs/screenshots/02-product-detail.png) |
+| ![Cart & checkout](docs/screenshots/03-cart.png) | ![AI chatbot](docs/screenshots/04-chatbot.png) |
+| ![Admin dashboard](docs/screenshots/05-admin-dashboard.png) | ![Order management](docs/screenshots/06-admin-orders.png) |
 
 ## Features
 
-- **Product Management**: Browse, search, and filter products by category
-- **Order Management**: View order history and order details
-- **Category Management**: Organize products into categories
-- **AI Chatbot**: Intelligent conversational assistant integrated with business data
-- **Authentication**: User registration and login via Laravel Breeze
-- **Responsive Design**: Bootstrap-based frontend with modern UI
-- **Comprehensive Testing**: Unit and feature tests with high code coverage
+### Storefront
+- Product catalog with search and category filtering
+- Product detail pages with customer reviews
+- Cart with quantity updates and coupon codes
+- Checkout flow and order placement
+- Order history, order detail and downloadable invoice
+- Order cancellation
+- Authentication and profile management (Laravel Breeze)
+
+### Admin back-office
+- Dashboard with store statistics
+- Product management (CRUD)
+- Category management (CRUD)
+- Coupon management (CRUD)
+- Order management and status updates
+- Customer account approval/rejection
+- Review moderation
+
+### AI Chatbot
+- Conversational assistant backed by the Google Gemini API
+- Answers grounded in real product, stock and order data
+- Persists conversation history per user
+- French-language interface
 
 ## Tech Stack
 
-- **Backend**: Laravel 11, PHP 8.x
-- **Frontend**: Blade templates, Bootstrap 5
-- **Database**: SQLite (configurable for MySQL/PostgreSQL)
+- **Backend**: Laravel 11, PHP 8.2+
+- **Frontend**: Blade templates, Bootstrap 5, Vite
+- **Database**: MySQL (SQLite supported for local/dev use)
 - **Authentication**: Laravel Breeze
 - **AI Integration**: Google Gemini API
 - **Testing**: PHPUnit
-- **ORM**: Eloquent
 
-## Installation
+## Getting Started
 
 ### Prerequisites
 
 - PHP 8.2 or higher
 - Composer
-- Node.js and NPM (for asset compilation)
-- SQLite or MySQL/PostgreSQL
+- Node.js and npm
+- MySQL (or SQLite for a quick local setup)
 
-### Step 1: Clone the Repository
-
-```bash
-git clone <repository-url>
-cd web2026pfa
-```
-
-### Step 2: Install Dependencies
+### Installation
 
 ```bash
+git clone https://github.com/firasmekki/E-commerce-Websites-AI-Chatbot.git
+cd E-commerce-Websites-AI-Chatbot
+
 composer install
 npm install
-```
 
-### Step 3: Environment Configuration
-
-Copy the example environment file:
-
-```bash
 cp .env.example .env
-```
-
-Generate application key:
-
-```bash
 php artisan key:generate
 ```
 
-### Step 4: Configure AI API Key
+### Configure the environment
 
-Add your Google Gemini API key to the `.env` file:
+Edit `.env` with your database credentials and add your Gemini API key:
 
 ```
+DB_CONNECTION=mysql
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-To get a Google Gemini API key:
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create a new API key
-3. Add it to your `.env` file
+Get a free Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
 
-### Step 5: Database Setup
-
-Run migrations:
+### Database & assets
 
 ```bash
 php artisan migrate
-```
-
-Seed the database with sample data:
-
-```bash
 php artisan db:seed
-```
-
-### Step 6: Compile Assets
-
-```bash
 npm run build
 ```
 
-### Step 7: Start Development Server
+### Run the app
 
 ```bash
 php artisan serve
 ```
 
-The application will be available at `http://127.0.0.1:8000`
+Visit `http://127.0.0.1:8000`.
 
 ## Project Structure
 
 ```
 app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── ProductController.php
-│   │   ├── OrderController.php
-│   │   ├── CategoryController.php
-│   │   └── ChatbotController.php
-│   └── Requests/
-├── Models/
-│   ├── User.php
-│   ├── Product.php
-│   ├── Category.php
-│   ├── Order.php
-│   ├── OrderItem.php
-│   └── ChatHistory.php
-├── Services/
-│   ├── ProductService.php
-│   ├── OrderService.php
-│   └── ChatbotService.php
+├── Http/Controllers/       # Storefront, Admin, Auth and Chatbot controllers
+├── Models/                 # User, Product, Category, Order, OrderItem, Coupon, ChatHistory, ...
+├── Services/                # ProductService, OrderService, ChatbotService
 database/
 ├── migrations/
 ├── seeders/
 └── factories/
-resources/
-└── views/
-    ├── products/
-    ├── orders/
-    ├── categories/
-    └── chatbot/
+resources/views/            # Blade views (storefront, admin, chatbot)
+routes/web.php              # Route definitions
 tests/
 ├── Unit/
 └── Feature/
 ```
 
-## Database Schema
-
-### Tables
-
-- **users**: User authentication and profiles
-- **categories**: Product categories
-- **products**: Product catalog
-- **orders**: Customer orders
-- **order_items**: Order line items
-- **chat_history**: AI chatbot conversation history
-
-### Relationships
-
-- User has many Orders and ChatHistory
-- Category has many Products
-- Product belongs to Category, has many OrderItems
-- Order belongs to User, has many OrderItems
-- OrderItem belongs to Order and Product
-- ChatHistory belongs to User
-
-## API Endpoints
-
-### Public Routes
-
-- `GET /products` - List all products (with search and category filter)
-- `GET /products/{id}` - Show product details
-- `GET /categories` - List all categories
-- `GET /categories/{id}` - Show category with products
-
-### Protected Routes (Authentication Required)
-
-- `GET /orders` - List user orders (with status filter)
-- `GET /orders/{id}` - Show order details
-- `POST /api/chatbot` - Send message to AI chatbot
-- `GET /api/chatbot/history` - Get chat history
-
-## AI Chatbot Integration
-
-The chatbot is integrated with Google Gemini API and features:
-
-- **Intelligent Prompt Construction**: Dynamically builds prompts with business data and conversation context
-- **Business Data Integration**: Queries real product and order data for contextual responses
-- **Conversation History**: Maintains conversation context for better user experience
-- **Error Handling**: Graceful error handling with logging
-- **Multi-language Support**: French language interface
-
-### Chatbot Capabilities
-
-- Product search and recommendations
-- Order status inquiries
-- Business statistics queries
-- General product information
-
 ## Testing
 
-### Run All Tests
-
 ```bash
-php artisan test
+php artisan test                       # all tests
+php artisan test --testsuite=Unit      # unit tests only
+php artisan test --testsuite=Feature   # feature tests only
 ```
 
-### Run Unit Tests Only
+## Security
 
-```bash
-php artisan test --testsuite=Unit
-```
+- All secrets (API keys, database credentials, `APP_KEY`) live in `.env`, which is **not** committed — see `.env.example` for the required variables.
+- CSRF protection, form request validation, Eloquent (parameterized queries) and Blade auto-escaping are used throughout to guard against CSRF/SQL-injection/XSS.
+- Admin routes are gated behind authentication + authorization middleware.
+- Before deploying: set `APP_ENV=production`, `APP_DEBUG=false`, generate a fresh `APP_KEY`, and serve over HTTPS.
 
-### Run Feature Tests Only
+## Deployment Checklist
 
-```bash
-php artisan test --testsuite=Feature
-```
-
-### Generate Coverage Report
-
-```bash
-php artisan test --coverage
-```
-
-Coverage report will be generated in the `coverage/` directory.
-
-### Test Coverage
-
-- **Unit Tests**: Models, Services, and prompt construction
-- **Feature Tests**: Routes, CRUD operations, authentication, and chatbot endpoints
-- **Current Coverage**: 65 tests passing (125 assertions)
-
-## Development
-
-### Code Style
-
-This project follows Laravel coding standards and PSR-12 coding style.
-
-### Service Layer Pattern
-
-Business logic is encapsulated in service classes:
-- `ProductService`: Product-related business logic
-- `OrderService`: Order-related business logic
-- `ChatbotService`: AI integration and conversation management
-
-### Security Best Practices
-
-- Input validation using Form Requests
-- CSRF protection enabled
-- SQL injection prevention via Eloquent ORM
-- XSS protection via Blade templating
-- Authentication and authorization middleware
-
-## Deployment
-
-### Production Checklist
-
-1. Set `APP_ENV=production` in `.env`
-2. Set `APP_DEBUG=false` in `.env`
-3. Configure production database
-4. Set strong `APP_KEY`
-5. Configure mail settings
-6. Run `php artisan config:cache`
-7. Run `php artisan route:cache`
-8. Run `php artisan view:cache`
-9. Set up SSL certificate
-10. Configure web server (Nginx/Apache)
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: API key not working
-- **Solution**: Verify your Google Gemini API key is valid and has sufficient quota
-
-**Issue**: Database connection errors
-- **Solution**: Check database credentials in `.env` file and ensure database server is running
-
-**Issue**: Assets not loading
-- **Solution**: Run `npm run build` to compile assets
-
-**Issue**: Tests failing
-- **Solution**: Run `php artisan migrate:fresh` and `php artisan db:seed` to reset database
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Write/update tests
-5. Ensure all tests pass
-6. Submit a pull request
+1. `APP_ENV=production`, `APP_DEBUG=false`
+2. Configure the production database and mail settings
+3. `php artisan config:cache && php artisan route:cache && php artisan view:cache`
+4. `npm run build`
+5. Configure HTTPS and the web server (Nginx/Apache)
 
 ## License
 
-This project is open-sourced software licensed under the MIT license.
+Licensed under the [MIT License](LICENSE).
 
 ## Author
 
-Developed as a Laravel 11 e-commerce application with AI chatbot integration.
-
-## Acknowledgments
-
-- Laravel Framework
-- Google Gemini API
-- Bootstrap CSS Framework
-- Laravel Breeze
+**Firas Mekki** — [@firasmekki](https://github.com/firasmekki)
