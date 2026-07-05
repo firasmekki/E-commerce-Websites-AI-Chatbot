@@ -10,15 +10,169 @@ A full-featured Laravel 11 e-commerce application with a customer storefront, an
 
 NextCommerce is a complete online store: product catalog, cart, coupons, checkout and order tracking for customers, plus a full admin dashboard to manage products, categories, orders, coupons and customer accounts. An AI chatbot (Google Gemini) is wired into the store's own data so it can answer questions about products, stock and orders in natural language.
 
-## Screenshots
+# Aperçu
 
-> Add screenshots to `docs/screenshots/` and reference them below (see [Screenshots to capture](#screenshots-to-capture) for the recommended list).
+## Interface Administrateur
 
-| | |
-|---|---|
-| ![Home / product catalog](docs/screenshots/01-catalog.png) | ![Product detail](docs/screenshots/02-product-detail.png) |
-| ![Cart & checkout](docs/screenshots/03-cart.png) | ![AI chatbot](docs/screenshots/04-chatbot.png) |
-| ![Admin dashboard](docs/screenshots/05-admin-dashboard.png) | ![Order management](docs/screenshots/06-admin-orders.png) |
+### Dashboard Admin
+Vue d'ensemble du chiffre d'affaires, des commandes, des clients et du catalogue, avec graphiques d'évolution des revenus et de répartition des produits par catégorie.
+
+**Capture :**
+![Dashboard Admin](docs/screenshots/localhost_8000_admin_dashboard.png)
+
+---
+
+### Gestion des Produits
+Liste du catalogue avec prix, stock et statut, création et modification de fiches produit.
+
+**Capture :**
+![Gestion des Produits](docs/screenshots/localhost_8000_admin_products.png)
+
+**Capture :**
+![Créer un produit](docs/screenshots/localhost_8000_admin_products-create.png)
+
+**Capture :**
+![Modifier un produit](docs/screenshots/localhost_8000_admin_products-edit.png)
+
+---
+
+### Gestion des Catégories
+Organisation du catalogue en rayons/catégories de produits.
+
+**Capture :**
+![Gestion des Catégories](docs/screenshots/localhost_8000_admin_categories.png)
+
+---
+
+### Gestion des Comptes Clients
+Suivi des comptes clients et de leur statut (actif/refusé).
+
+**Capture :**
+![Gestion des Comptes Clients](docs/screenshots/localhost_8000_admin_customers.png)
+
+---
+
+### Gestion des Commandes
+Suivi et mise à jour du statut des commandes (en attente, livrée, etc.).
+
+**Capture :**
+![Gestion des Commandes](docs/screenshots/localhost_8000_admin_orders.png)
+
+---
+
+### Gestion des Coupons
+Création et suivi des codes de réduction appliqués au panier.
+
+**Capture :**
+![Gestion des Coupons](docs/screenshots/localhost_8000_admin_coupons.png)
+
+---
+
+## Interface Client
+
+### Connexion
+Authentification sécurisée des clients.
+
+**Capture :**
+![Connexion](docs/screenshots/localhost_8000_client_login.png)
+
+---
+
+### Inscription
+Création d'un nouveau compte client.
+
+**Capture :**
+![Inscription](docs/screenshots/localhost_8000_client_register.png)
+
+---
+
+### Dashboard Client
+Vue d'ensemble du compte : commandes récentes, produits disponibles, nouveaux produits et accès rapide au panier.
+
+**Capture :**
+![Dashboard Client](docs/screenshots/localhost_8000_client_dashboard.png)
+
+---
+
+### Boutique
+Catalogue des produits avec recherche et filtrage par catégorie.
+
+**Capture :**
+![Boutique](docs/screenshots/localhost_8000_client_products.png)
+
+---
+
+### Détail Produit
+Fiche produit détaillée : description, prix, stock disponible, produits similaires et avis clients.
+
+**Capture :**
+![Détail Produit](docs/screenshots/localhost_8000_client_product-detail.png)
+
+---
+
+### Catégories
+Liste des catégories de produits disponibles.
+
+**Capture :**
+![Catégories](docs/screenshots/localhost_8000_client_categories.png)
+
+---
+
+### Détail Catégorie
+Produits filtrés par catégorie sélectionnée.
+
+**Capture :**
+![Détail Catégorie](docs/screenshots/localhost_8000_client_category-detail.png)
+
+---
+
+### Panier
+Ajustement des quantités, application d'un code promo et validation de la commande.
+
+**Capture :**
+![Panier](docs/screenshots/localhost_8000_client_cart.png)
+
+---
+
+### Mes Commandes
+Historique des commandes passées par le client.
+
+**Capture :**
+![Mes Commandes](docs/screenshots/localhost_8000_client_orders.png)
+
+---
+
+### Détail Commande
+Consultation détaillée d'une commande.
+
+**Capture :**
+![Détail Commande](docs/screenshots/localhost_8000_client_order-detail.png)
+
+---
+
+### Facture
+Facture téléchargeable pour une commande passée.
+
+**Capture :**
+![Facture](docs/screenshots/localhost_8000_client_order-invoice.png)
+
+---
+
+### Profil
+Gestion des informations personnelles et du mot de passe.
+
+**Capture :**
+![Profil](docs/screenshots/localhost_8000_client_profile.png)
+
+---
+
+### Assistant IA
+Chatbot intelligent (Google Gemini) répondant aux questions sur les produits, le stock et les commandes.
+
+**Capture :**
+![Assistant IA](docs/screenshots/localhost_8000_client_chatbot.png)
+
+---
 
 ## Features
 

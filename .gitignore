@@ -38,3 +38,4 @@ auth.json
 
 # Local tooling / generated screenshots (not for the repo)
 /screenshots_rapport
+/artisan_serve.log
